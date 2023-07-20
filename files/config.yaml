@@ -1,0 +1,111 @@
+application:
+  name: autocrud
+  port: 8080
+  path_extention: /api
+  documents:
+    version:
+      path: /version
+      apis:
+        get:
+          type: STATIC
+          path: /
+          method: GET
+          response:
+            status_code: 200
+            body:
+              app: Auto CRUD
+              description: Auto CRUD API Generator in Golang
+              version: v1.0.0
+    student:
+      path: /students
+      id:
+        name: id
+        type: uuid
+      fields:
+        name:
+          type: string
+          required: true
+          min: 3
+          max: 50
+        class:
+          type: string
+          required: true
+        age:
+          type: int
+          required: false
+      apis:
+        create:
+          type: ADD
+          path: /
+          method: POST
+          response:
+            status_code: 201
+        get:
+          type: FETCH
+          path: /{id}
+          method: GET
+          response:
+            status_code: 200
+        update:
+          type: FETCH
+          path: /{id}
+          method: PUT
+          response:
+            status_code: 200
+        delete:
+          type: DELETE
+          path: /{id}
+          method: DELETE
+          response:
+            status_code: 204
+        list:
+          type: LIST
+          path: /
+          method: GET
+          response:
+            status_code: 200
+    user:
+      path: /users
+      id:
+        name: id
+        type: int
+      fields:
+        name:
+          type: string
+          required: true
+          min: 3
+          max: 50
+        isStudent:
+          type: bool
+          required: true
+      apis:
+        create:
+          type: ADD
+          path: /
+          method: POST
+          response:
+            status_code: 201
+        get:
+          type: FETCH
+          path: /{id}
+          method: GET
+          response:
+            status_code: 200
+        update:
+          type: FETCH
+          path: /{id}
+          method: PUT
+          response:
+            status_code: 200
+        delete:
+          type: DELETE
+          path: /{id}
+          method: DELETE
+          response:
+            status_code: 204
+        list:
+          type: LIST
+          path: /
+          method: GET
+          response:
+            status_code: 200

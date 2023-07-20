@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  auto-crud:
+    image: uzrnem/auto-crud:0.1
+    container_name: auto-crud
+    volumes:
+      - $PWD/files:/app/files
+    ports:
+      - 8080:8080
